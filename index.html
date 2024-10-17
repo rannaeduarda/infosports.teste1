@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,7 +9,6 @@
   <link rel="stylesheet" href="footer.css">
   <title>InfoSports</title>
 </head>
-
 <body>
   <div class="container">
     <header class="header">
@@ -39,8 +37,6 @@
             <p class="mainCategoryCardDescription">Conheça mais sobre o futebol.</p>
           </div>
         </a>
-
-
         <a class="pag-link" href="futvôlei.html">
           <div class="categoryCard">
             <img src="foto futvolei.jpeg" alt="mainCardImg" class="mainCardImg" width=320px height=180px>
@@ -48,7 +44,6 @@
             <p class="mainCategoryCardDescription">Conheça mais sobre futvôlei.</p>
           </div>
         </a>
-
         <a class="pag-link" href="handebol.html">
           <div class="categoryCard">
             <img src="foto handebol.jpeg" alt="mainCardImg" class="mainCardImg" width=320px height=180px>
@@ -56,7 +51,6 @@
             <p class="mainCategoryCardDescription">Conheça mais sobre o handebol.</p>
           </div>
         </a>
-
         <a class="pag-link" href="surf.html">
           <div class="categoryCard">
             <img src="foto surf.jpeg" alt="mainCardImg" class="mainCardImg" width=320px height=180px>
@@ -64,7 +58,6 @@
             <p class="mainCategoryCardDescription">Conheça mais sobre o surf.</p>
           </div>
         </a>
-
         <a class="pag-link" href="vôlei.html">
           <div class="categoryCard">
             <img src="foto volei.jpeg" alt="mainCardImg" class="mainCardImg" width=320px height=180px>
@@ -72,26 +65,53 @@
             <p class="mainCategoryCardDescription">Conheça mais sobre o vôlei.</p>
           </div>
         </a>
-
       </div>
       <aside class="sidebar">
         <div class="sidebarContent">
           <div class="IMC">
             <p>INDICE DE MASSA CORPORAL (IMC)</p>
-            <label for="#peso">Peso (KG)</label>
+            <label for="peso">Peso (KG)</label>
             <input id="peso" type="text" placeholder="Digite o peso...">
-            <label for="#altura">Altura (M)</label>
+            <label for="altura">Altura (M)</label>
             <input id="altura" type="text" placeholder="Digite a altura...">
-            <button class="btnCalcular">Calcular</button>
+            <button class="btnCalcular" onclick="calcularIMC()">Calcular</button>
+            <p id="resultado"></p>
+          </div>
+        </div>
       </aside>
-
     </section>
-
     <footer class="footer">
       <span>InfoSports</span>
       <a href="#backToTop" class="footerAnchor">VOLTAR PARA O TOPO</a>
     </footer>
   </div>
-</body>
 
+  <!-- JavaScript para calcular o IMC -->
+  <script>
+    function calcularIMC() {
+      var peso = parseFloat(document.getElementById("peso").value);
+      var altura = parseFloat(document.getElementById("altura").value);
+
+      if (isNaN(peso) || isNaN(altura)) {
+        document.getElementById("resultado").textContent = "Por favor, insira valores válidos.";
+        return;
+      }
+
+      var imc = peso / (altura * altura);
+      var resultado = "";
+
+      if (imc < 18.5) {
+        resultado = "Abaixo do peso";
+      } else if (imc >= 18.5 && imc < 24.9) {
+        resultado = "Peso normal";
+      } else if (imc >= 25 && imc < 29.9) {
+        resultado = "Sobrepeso";
+      } else {
+        resultado = "Obesidade";
+      }
+
+      document.getElementById("resultado").textContent = "Seu IMC é: " + imc.toFixed(2) + " (" + resultado + ")";
+    }
+  </script>
+</body>
 </html>
